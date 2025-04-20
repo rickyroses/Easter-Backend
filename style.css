@@ -1,0 +1,402 @@
+/* style.css - Easter Pastel Theme */
+
+/* --- Estilos Base y Contenedor Principal --- */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    background-color: #FFFDF5; /* Amarillo muy pálido / Crema */
+    padding-top: 20px;
+    color: #5a5a5a; /* Gris suave para texto principal */
+}
+
+.main-container {
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 16px; /* Bordes más redondeados */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Sombra un poco más suave */
+    text-align: center;
+    width: 90%;
+    max-width: 700px;
+    min-height: 400px;
+}
+
+h1 {
+    color: #B2A8E6; /* Lavanda suave */
+    font-weight: bold;
+}
+
+h2 {
+    color: #A8D7E6; /* Azul bebé */
+    margin-bottom: 20px;
+}
+
+h3 {
+    color: #777; /* Gris medio */
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+/* --- Gestión de Pantallas (Sin Cambios en lógica, solo animación) --- */
+.screen {
+    display: none;
+}
+.screen.active-screen {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* --- Pantalla de Unión (Join Screen) --- */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #888; /* Gris más claro para etiquetas */
+}
+.form-group input[type="text"] {
+    width: calc(100% - 22px); /* Ajuste para padding/border */
+    padding: 11px;
+    border: 1px solid #ddd; /* Borde más suave */
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.04);
+}
+.form-group input[type="text"]:focus {
+    border-color: #A8E6CF; /* Borde Menta al enfocar */
+    outline: none;
+    box-shadow: 0 0 8px rgba(168, 230, 207, 0.3); /* Sombra Menta */
+}
+
+/* Botón Principal (Unirse, Jugar de Nuevo) */
+button {
+    padding: 12px 25px; /* Ligeramente más padding */
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #A8E6CF; /* Verde Menta como color principal */
+    color: #4a7c6d; /* Texto verde oscuro para contraste */
+    border: none;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: all 0.2s ease; /* Transición más completa */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+button:hover:not(:disabled) {
+    background-color: #97DDC0; /* Menta un poco más oscuro */
+    transform: translateY(-2px); /* Efecto elevación */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+button:active:not(:disabled) {
+    transform: translateY(0px); /* Efecto click */
+    background-color: #86CFAF;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
+}
+button:disabled {
+    background-color: #E9ECEF; /* Gris claro para deshabilitado */
+    color: #aaa;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#join-button {
+    width: 100%; /* Ocupa todo el ancho */
+}
+
+.error-message {
+    color: #A53F5B; /* Rosa oscuro para texto error */
+    background-color: #FFEFF2; /* Fondo Rosa muy pálido */
+    border: 1px solid #FFD1DC; /* Borde Rosa Pastel */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    min-height: 1.2em;
+    text-align: center;
+    display: inline-block;
+}
+.error-message:empty { display: none; }
+
+
+/* --- Sala de Espera (Waiting Room) --- */
+#player-list {
+    list-style: none;
+    padding: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+#player-list li {
+    margin: 0;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 16px;
+    background-color: #fff; /* Fondo blanco por defecto */
+}
+#player-list li:last-child { border-bottom: none; }
+#player-list li:nth-child(even) { /* Color alterno suave */
+    background-color: #F5F5FF; /* Lavanda muy pálido */
+}
+
+
+/* --- Pantalla de Juego (Game Screen) --- */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
+    color: #888; /* Gris claro */
+}
+#timer {
+    font-size: 22px;
+    font-weight: bold;
+    color: #666; /* Gris oscuro */
+    background-color: #f5f5f5; /* Gris muy claro */
+    padding: 6px 18px;
+    border-radius: 20px;
+    min-width: 75px;
+    text-align: center;
+}
+/* Colores para el timer (el JS cambia el color del texto) */
+#timer[style*="color: orange"] { background-color: #FFF3CD; } /* Fondo amarillo pálido */
+#timer[style*="color: red"] { background-color: #FFD1DC; } /* Fondo rosa pálido */
+#timer[style*="color: darkred"] { background-color: #FFC1CC; color: #8B0000 !important; } /* Fondo rosa más intenso */
+
+
+#question-area { margin-bottom: 25px; }
+#question-text {
+    font-size: 21px; /* Un poco más grande */
+    font-weight: normal; /* No tan grueso */
+    color: #444; /* Gris oscuro */
+    min-height: 50px;
+    line-height: 1.5; /* Mejor espaciado de línea */
+}
+
+/* Contenedor de botones de opción */
+#options-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* Estilo base de los botones de opción */
+.option-button {
+    display: block;
+    width: 100%;
+    padding: 16px 12px; /* Más padding vertical */
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+    background-color: #F8F8FF; /* Lavanda muy, muy pálido */
+    color: #6a6a8a; /* Texto gris-azulado */
+    border: 2px solid #E0E0FF; /* Borde lavanda pálido */
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+}
+.option-button:hover:not(:disabled) {
+    background-color: #EDEDFF;
+    border-color: #C8C8FF;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+}
+.option-button:active:not(:disabled) {
+    transform: translateY(0px);
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.08);
+}
+
+/* Estados de los botones de opción */
+.option-button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background-color: #f0f0f0; /* Gris muy claro */
+    border-color: #e0e0e0;
+    color: #aaa;
+    transform: none;
+    box-shadow: none;
+}
+
+.option-button.correct {
+    background-color: #D4F0C4; /* Verde Pastel */
+    border-color: #AEE095;
+    color: #3B682A; /* Texto verde oscuro */
+    font-weight: bold;
+    opacity: 1;
+}
+.option-button.correct::after { content: ' ✔'; float: right; font-weight: bold; }
+
+.option-button.incorrect {
+    background-color: #FFD1DC; /* Rosa Pastel */
+    border-color: #FFACC1;
+    color: #A53F5B; /* Texto rosa oscuro */
+    font-weight: bold;
+    opacity: 0.9; /* Un poco más visible que deshabilitado */
+}
+.option-button.incorrect::after { content: ' ✘'; float: right; font-weight: bold; }
+
+
+/* Área de Feedback */
+#feedback-area {
+    min-height: 1.5em;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    font-size: 19px;
+    font-weight: bold;
+}
+#feedback-area:empty { min-height: 0; margin: 0; }
+/* Colores para el feedback */
+#feedback-area:contains("Correct!"), #feedback-area:contains("¡Correcto!") { color: #3B682A; }
+#feedback-area:contains("Incorrect!"), #feedback-area:contains("¡Incorrecto!") { color: #A53F5B; }
+#feedback-area:contains("Time's up!"), #feedback-area:contains("¡Se acabó el tiempo!") { color: #D9534F; }
+
+
+/* Área de Puntuaciones durante el juego */
+#progress-bar-area {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+#progress-bar-area h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #666;
+    text-align: left;
+}
+#progress-bar-area ul { list-style: none; padding: 0; }
+#progress-bar-area li {
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px; /* Más redondeado */
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+}
+#progress-bar-area li span:first-child { color: #555; } /* Nombre */
+#progress-bar-area li span:last-child { /* Puntuación */
+    font-weight: bold;
+    color: #51A890; /* Verde menta oscuro para score */
+    background-color: #E6FAF5; /* Fondo menta muy pálido */
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+
+/* --- Pantalla de Podio Final --- */
+.podium-stand {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    min-height: 250px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    gap: 8px; /* Un poco más de espacio */
+}
+
+.podium-place {
+    width: 31%; /* Ajuste ligero */
+    max-width: 160px;
+    padding: 25px 10px 15px 10px;
+    border: 2px solid #eee;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0; /* Más redondeado arriba */
+    text-align: center;
+    box-shadow: 0 -3px 8px rgba(0,0,0,0.06);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.podium-place h3 { /* 1st, 2nd, 3rd */
+    margin-top: 0;
+    margin-bottom: 18px;
+    font-size: 26px;
+    color: white;
+    padding: 6px 0;
+    border-radius: 6px;
+    box-shadow: inset 0 -2px 4px rgba(0,0,0,0.1);
+}
+.podium-place .player-name {
+    font-weight: bold;
+    font-size: 17px;
+    margin-bottom: 8px;
+    color: #444;
+    word-wrap: break-word;
+}
+.podium-place .player-score {
+    font-size: 15px;
+    color: #666;
+    font-weight: bold;
+}
+
+/* Colores pastel para el podio */
+#podium-1st {
+    height: 190px;
+    background-color: #FFFACD; /* Amarillo Limón Pálido */
+    border-color: #F5EAB6;
+    order: 2;
+    z-index: 1;
+}
+#podium-1st h3 { background-color: #E6D8A3; color: #fff; text-shadow: 1px 1px 1px rgba(0,0,0,0.1); }
+
+#podium-2nd {
+    height: 150px;
+    background-color: #B0E0E6; /* Azul Polvo */
+    border-color: #99D1D9;
+    order: 1;
+}
+#podium-2nd h3 { background-color: #87B9C1; color: #fff; }
+
+#podium-3rd {
+    height: 120px;
+    background-color: #FFDAB9; /* Melocotón Claro */
+    border-color: #F0C8A1;
+    order: 3;
+}
+#podium-3rd h3 { background-color: #D9A97E; color: #fff; }
+
+
+/* 4to lugar */
+#podium-4th {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 16px;
+    color: #888;
+}
+#podium-4th h4 { margin-bottom: 5px; color: #777; }
+
+
+/* Resaltado de tu puesto en el podio */
+.podium-place[style*="border: 3px solid gold"] {
+    border-color: #FFEC8B !important; /* Amarillo dorado más claro */
+    border-width: 3px !important; /* Asegura el grosor */
+    box-shadow: 0 0 18px rgba(255, 236, 139, 0.8); /* Sombra dorada */
+    transform: scale(1.05);
+}
+
+
+/* Botón Play Again */
+#play-again-button {
+    margin-top: 30px;
+    background-color: #FFB6C1; /* Rosa Claro */
+    color: #9B4C5A; /* Texto rosa oscuro */
+}
+#play-again-button:hover:not(:disabled) {
+    background-color: #FFAAB5;
+}
+#play-again-button:active:not(:disabled) {
+    background-color: #FF9FAA;
+}

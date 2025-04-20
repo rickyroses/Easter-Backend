@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easter Scavenger Hunt Quiz</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</head>
+<body>
+
+    <div class="main-container">
+
+        <div id="join-screen" class="screen active-screen">
+            <h1>Easter Hunt Quiz!</h1>
+            <h2>Join Game / Únete al Juego</h2>
+            <div class="form-group">
+                <label for="player-name">Your Name / Tu Nombre:</label>
+                <input type="text" id="player-name" placeholder="Escribe tu nombre aquí...">
+            </div>
+            <button id="join-button">Join / Unirse</button>
+            <p id="join-error" class="error-message"></p> </div>
+
+        <div id="waiting-room" class="screen">
+            <h2>Waiting Room / Sala de Espera</h2>
+            <p>Waiting for other players... / Esperando a otros jugadores...</p>
+            <h3>Players Connected / Jugadores Conectados:</h3>
+            <ul id="player-list">
+                <li>Esperando...</li>
+            </ul>
+            <p>The game will start soon! / ¡El juego comenzará pronto!</p>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <span id="question-counter">Question X/Y</span> <span id="theme-name">Theme Name</span> <div id="timer">--:--</div> </div>
+            <div id="question-area">
+                <p id="question-text">The question text will appear here... / El texto de la pregunta aparecerá aquí...</p>
+            </div>
+            <div id="options-container">
+                <button class="option-button">Option A / Opción A</button>
+                <button class="option-button">Option B / Opción B</button>
+                <button class="option-button">Option C / Opción C</button>
+                <button class="option-button">Option D / Opción D</button>
+            </div>
+            <div id="feedback-area">
+                </div>
+            <div id="progress-bar-area">
+                 <p>Scores will update here... / Las puntuaciones se actualizarán aquí...</p>
+            </div>
+        </div>
+
+        <div id="podium-screen" class="screen">
+            <h2>Final Results! / ¡Resultados Finales!</h2>
+            <div class="podium-stand">
+                <div id="podium-2nd" class="podium-place">
+                    <h3>2nd</h3>
+                    <p class="player-name">Player 2 Name</p>
+                    <p class="player-score">Score: XXXX</p>
+                </div>
+                <div id="podium-1st" class="podium-place">
+                    <h3>1st</h3>
+                    <p class="player-name">Player 1 Name</p>
+                    <p class="player-score">Score: YYYY</p>
+                </div>
+                <div id="podium-3rd" class="podium-place">
+                    <h3>3rd</h3>
+                    <p class="player-name">Player 3 Name</p>
+                    <p class="player-score">Score: ZZZ</p>
+                </div>
+            </div>
+             <div id="podium-4th" class="podium-other">
+                 <h4>4th Place</h4>
+                 <p class="player-name">Player 4 Name - Score: WW</p>
+             </div>
+            <button id="play-again-button">Play Again? / ¿Jugar Otra Vez?</button>
+        </div>
+
+    </div> <script src="client.js"></script>
+</body>
+</html>
