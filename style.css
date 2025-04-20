@@ -177,7 +177,7 @@ button:disabled {
 
 #question-area { margin-bottom: 25px; }
 #question-text {
-    font-size: 21px; /* Un poco más grande */
+    font-size: 15px; /* Un poco más grande */
     font-weight: normal; /* No tan grueso */
     color: #444; /* Gris oscuro */
     min-height: 50px;
