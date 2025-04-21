@@ -4,7 +4,7 @@
 // Establece la conexión con el servidor Socket.IO.
 // Cambia la URL si tu servidor no está corriendo localmente en el puerto 3000.
 console.log("Attempting to connect to Socket.IO server...");
-const socket = io('http://localhost:10000'); // O la URL de tu servidor desplegado: 'https://your-backend-url.com'
+const socket = io('https://easter-xjd8.onrender.com:10000'); // O la URL de tu servidor desplegado: 'https://your-backend-url.com'
 
 // --- 2. Referencias a Elementos del DOM ---
 // Obtiene referencias a los elementos HTML que necesitaremos manipular mediante JavaScript.
