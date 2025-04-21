@@ -359,8 +359,9 @@ function moveToNextQuestion(gameCode) {
         const questionData = {
             index: game.currentQuestionIndex,
             totalQuestions: game.questions.length,
-            text: question.text_es, // O 'text_en' o ambos
-            options: question.options,
+            text_es: question.text_es,       // Envía texto en español
+            text_en: question.text_en,       // Envía texto en inglés
+            options: question.options,       // Las opciones ya pueden tener ambos idiomas si los pusiste
             theme: question.theme,
             timeLimit: QUESTION_TIME_LIMIT
         };
